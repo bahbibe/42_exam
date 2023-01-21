@@ -52,4 +52,3 @@ int main(int argc, char *argv[])
 		printf("[%s]\n", s[i]);
 	return 0;
 }
-

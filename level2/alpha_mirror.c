@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 22:26:37 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/19 22:28:19 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/01/25 08:18:20 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/01/25 11:21:45 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
 int main(int ac, char **av)
 {
 	int i = 0;
@@ -21,15 +20,10 @@ int main(int ac, char **av)
 		while(av[1][i]) 
 		{
 			if(av[1][i] >= 'A' && av[1][i] <= 'Z')
-			{	
 				av[1][i] = 'Z' - av[1][i] + 'A';
-			}
 			else if (av[1][i] >= 'a' && av[1][i] <= 'z')
-			{
 				av[1][i] = 'z' - av[1][i] + 'a';
-			}
-			write(1, &av[1][i], 1);
-			i++;
+			write(1, &av[1][i++], 1);
 		}
 	}
 	write (1,"\n",1);

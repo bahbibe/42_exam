@@ -5,11 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 06:48:33 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/19 06:55:25 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/01/25 08:18:08 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/01/25 08:18:08 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<unistd.h>
 int main(int ac, char **av)
 {
 	int i= 0;

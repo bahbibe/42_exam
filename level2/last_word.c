@@ -6,10 +6,11 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 23:22:02 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/19 07:14:18 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/01/25 08:18:55 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<unistd.h>
 int is_space(char c)
 {
 	return(c == ' ' || c == '\t');

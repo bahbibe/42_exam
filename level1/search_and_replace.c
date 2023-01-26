@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 21:16:12 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/19 21:16:14 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/01/25 08:18:10 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/01/25 08:18:10 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
-int len(char *s)
+int ft_strlen(char *s)
 {
 	int i = 0;
 	while (s[i])

@@ -6,10 +6,11 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 22:29:45 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/17 22:29:47 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/01/25 10:33:34 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include<stdlib.h>
 int	*ft_rrange(int start, int end)
 {
 	int i;
@@ -29,4 +30,10 @@ int	*ft_rrange(int start, int end)
 	}
 	tab[i] = end;
 	return (tab);
+}
+
+int main(int argc, char const *argv[])
+{
+	
+	return 0;
 }

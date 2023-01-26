@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ulstr.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 08:09:11 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/25 13:29:50 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/01/25 08:18:13 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/01/25 08:18:13 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-int	ft_atoi_base(const char *str, int base)
+#include<unistd.h>
+int main(int argc, char  *argv[])
 {
-	int i = -1;
-	int sign = 1;
-	int result = 0;
-	if (str[0] == '-' && !(++i))
-		sign = -1;
-	while (str[++i] && ((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')))
-		result = result * base + str[i] - (str[i] < 'A' ? '0' : str[i] < 'a' ? '7' : 'W');
-	return (result * sign);
+    int i = 0;
+    if (argc == 2)
+    {
+        while (argv[1][i])
+        {
+            if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
+                argv[1][i] -= 32;
+            else if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+                argv[1][i] += 32;
+            write(1, &argv[1][i++],1);
+        }
+    }
+    write(1, "\n",1);
+    return 0;
 }

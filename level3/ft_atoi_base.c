@@ -6,21 +6,30 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 08:09:11 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/25 13:29:50 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/02/06 21:39:31 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-int	ft_atoi_base(const char *str, int base)
+int	ft_atoi_base(const char *str, int str_base)
 {
-	int i = -1;
-	int sign = 1;
-	int result = 0;
-	if (str[0] == '-' && !(++i))
+	int	i = 0;
+	int	sign = 1;
+	int	result = 0;
+	if (str[i] == '-')
+	{
 		sign = -1;
-	while (str[++i] && ((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')))
-		result = result * base + str[i] - (str[i] < 'A' ? '0' : str[i] < 'a' ? '7' : 'W');
+		i++;
+	}
+	while (str[i] && ((str[i] >= '0' && str[i] <= '9') || (str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')))
+	{
+		result *= str_base;
+		if (str[i] >= '0' && str[i] <= '9')
+			result += str[i] - '0';
+		else if (str[i] >= 'A' && str[i] <= 'Z')
+			result += str[i] - '7';
+		else if (str[i] >= 'a' && str[i] <= 'z')
+			result += str[i] - 'W';
+		i++;
+	}
 	return (result * sign);
 }

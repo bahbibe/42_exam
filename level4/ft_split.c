@@ -6,7 +6,7 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 02:17:11 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/20 08:07:05 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/02/06 21:21:29 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**ft_split(char *str)
 		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
 			i++;
 	}
-	char **output = (char **)malloc(sizeof(char *) * (wc + 1));
+	char **out = (char **)malloc(sizeof(char *) * (wc + 1));
 	i = 0;
 	while (str[i])
 	{
@@ -49,18 +49,10 @@ char	**ft_split(char *str)
 			i++;
 		if (i > j)
 		{
-			output[k] = (char *)malloc(sizeof(char) * ((i - j) + 1));
-			ft_strncpy(output[k++], &str[j], i - j);
+			out[k] = (char *)malloc(sizeof(char) * ((i - j) + 1));
+			ft_strncpy(out[k++], &str[j], i - j);
 		}
 	}
-	output[k] = NULL;
-	return (output);
-}
-
-int main(int argc, char *argv[])
-{
-	char **s = ft_split(argv[1]);
-	for (int i = 0; s[i]; i++)
-		printf("[%s]\n", s[i]);
-	return 0;
+	out[k] = NULL;
+	return (out);
 }

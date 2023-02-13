@@ -6,12 +6,13 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 08:18:10 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/25 08:18:10 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/02/13 10:46:16 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
-int ft_strlen(char *s)
+
+int len(char *s)
 {
 	int i = 0;
 	while (s[i])
@@ -21,7 +22,7 @@ int ft_strlen(char *s)
 int main(int ac, char **av)
 {
 	int i = -1;
-	if(ac == 4 &&  len(av[2]) == 1 && len(av[3]) == 1)
+	if(ac == 4 && len(av[2]) == 1 && len(av[3]) == 1)
 	{
 		while (av[1][++i])
 		{

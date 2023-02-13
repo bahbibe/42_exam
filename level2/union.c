@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   repeat_alpha.c                                     :+:      :+:    :+:   */
+/*   union.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 08:18:05 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/13 10:30:09 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/13 11:32:19 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/13 11:40:59 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
-void repeat(char c, int i)
+#include <unistd.h>
+
+int main(int ac, char  *av[])
 {
-	while (i--)
-		write(1,&c,1);
-}
-int main(int ac, char *av[])
-{
-	int i = -1 ;
-	if( ac == 2)
+	int i = 1;
+	int j ;
+	int tab[256] = {0};
+	if (ac == 3)
 	{
-		while (av[1][++i])
+		while (i < ac)
 		{
-			if(av[1][i] >= 'a' && av[1][i] <= 'z')
-				repeat(av[1][i],av[1][i] - 'a' + 1);
-			else if(av[1][i] >= 'A' && av[1][i] <= 'Z')
-				repeat(av[1][i],av[1][i] - 'A' + 1);
-			else
-				write(1,av[1][i],1);
+			j = 0;
+			while (av[i][j])
+				tab[(int)av[i][j++]] = 1;
+			i++;
+		}
+		i = 1;
+		while (i < ac)
+		{
+			j = 0;
+			while (av[i][j])
+			{
+				if (tab[(int)av[i][j]] == 1)
+				{
+					write(1,&av[i][j],1);
+					tab[(int)av[i][j]] = 0;
+				}
+				j++;
+			}
+			i++;
 		}
 	}
 	write(1,"\n",1);

@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 07:07:52 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/08 13:37:22 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/13 11:20:35 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/13 11:36:28 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-char *ft_itoa(int n) 
+#include <unistd.h>
+
+int main(int ac, char  *av[])
 {
-	char *res;
-	int len = n <= 0 ? 1 : 0;
-	long tmp = n;
-	while (tmp) 
+	int i = 0;
+	int *tab[256] = {0};
+	if(ac == 3)
 	{
-		len++;
-		tmp /= 10;
+		while (av[2][i])
+			tab[(int)av[2][i++]] = 1;
+		i = 0;
+		while (av[1][i])
+		{
+			if (tab[(int)av[1][i]] == 1)
+			{
+				write(1,&av[1][i],1);
+				tab[(int)av[2][i]] = 0;
+			}
+			i++;
+		}
 	}
-	if (!(res = malloc(sizeof(char) * (len + 1)))) return NULL;
-	if (n == 0) 
-		res[0] = '0';
-	if (n < 0 && (res[0] = '-')) n = -n;
-	res[len] = '\0';
-	while (n)
-	{
-		res[--len] = n % 10 + '0';
-		n /= 10;
-	}	
-	return res;
+	write(1,"\n",1);
+	return 0;
 }

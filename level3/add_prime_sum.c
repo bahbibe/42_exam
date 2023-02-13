@@ -6,22 +6,19 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:37:14 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/01/25 13:39:14 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/02/13 12:47:49 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
-int small_atoi(char *s) {
-    int res = 0;
-	int sign = 1;
-	if(*s == '-')
-	{
-		sign = -1;
-		s++;
-	}
-    while (*s >= '0' && *s <= '9')
-        res = res * 10 + (*s++ - '0');
-    return res * sign;
+
+int small_atoi(char *s) 
+{
+	int res = 0;
+
+	while (*s >= '0' && *s <= '9')
+		res = res * 10 + (*s++ - '0');
+	return res ;
 }
 
 int	is_prime(int nb)

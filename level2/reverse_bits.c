@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 07:07:52 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/08 13:37:22 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/13 11:47:18 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/13 11:47:19 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-char *ft_itoa(int n) 
+unsigned char	reverse_bits(unsigned char octet)
 {
-	char *res;
-	int len = n <= 0 ? 1 : 0;
-	long tmp = n;
-	while (tmp) 
+	int		i = 8;
+	unsigned char	res = 0;
+
+	while (i > 0)
 	{
-		len++;
-		tmp /= 10;
+		res = res * 2 + (octet % 2);
+		octet = octet / 2;
+		i--;
 	}
-	if (!(res = malloc(sizeof(char) * (len + 1)))) return NULL;
-	if (n == 0) 
-		res[0] = '0';
-	if (n < 0 && (res[0] = '-')) n = -n;
-	res[len] = '\0';
-	while (n)
-	{
-		res[--len] = n % 10 + '0';
-		n /= 10;
-	}	
-	return res;
+	return (res);
 }

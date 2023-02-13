@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   rotone.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 07:07:52 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/08 13:37:22 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/13 10:41:51 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/13 10:43:41 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-char *ft_itoa(int n) 
+#include <unistd.h>
+
+int main(int argc, char **argv)
 {
-	char *res;
-	int len = n <= 0 ? 1 : 0;
-	long tmp = n;
-	while (tmp) 
+	int i = 0;
+	
+	if (argc == 2)
 	{
-		len++;
-		tmp /= 10;
+		while(argv[1][i])
+		{ 
+			if ((argv[1][i] >= 'A' && argv[1][i] <= 'Y') || (argv[1][i] >= 'a' && argv[1][i] <= 'y')) 
+				argv[1][i]  = argv[1][i] + 1;
+			else if (argv[1][i] == 'Z' || argv[1][i] == 'z')
+				argv[1][i] = argv[1][i] - 25;
+			write(1, &argv[1][i], 1);
+			i++;
+		}
 	}
-	if (!(res = malloc(sizeof(char) * (len + 1)))) return NULL;
-	if (n == 0) 
-		res[0] = '0';
-	if (n < 0 && (res[0] = '-')) n = -n;
-	res[len] = '\0';
-	while (n)
-	{
-		res[--len] = n % 10 + '0';
-		n /= 10;
-	}	
-	return res;
+	write (1, "\n", 1);
+	return 0;
 }

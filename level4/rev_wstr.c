@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rostring.c                                         :+:      :+:    :+:   */
+/*   rev_wstr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 08:42:17 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/14 03:56:15 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/14 03:56:35 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/14 04:05:49 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,47 +74,49 @@ int main(int argc, char  *argv[])
 	{
 		split = ft_split(argv[1]);
 		while (split[i])
+			i++;
+		while(--i >= 0)
 		{
-			put_str(split[i++]);
+			put_str(split[i]);
 			write(1," ",1);
 		}
-		put_str(split[0]);
-
 	}
 	write(1,"\n",1);
 	return 0;
 }
+//#################################### other solution ######################################//
 
-//############################# Other solution ####################################//
 
-int		main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	int		i;
-	int		j;
-	int		rot;
-
-	if (argc == 2)
-	{
-		i = 0;
-		j = 0;
-		while (is_space(argv[1][i]))
+	int start;
+	int end;
+	int i = 0;
+		
+	if(argc == 2)
+	{   
+		while(argv[1][i] != '\0')
 			i++;
-		rot = i;
-		while (argv[1][i] && !is_space(argv[1][i]))
-			i++;
-		while (argv[1][i])
+		while(i >= 0)
 		{
-			if (argv[1][i] && !is_space(argv[1][i]) && is_space(argv[1][i - 1]))
+			while( argv[1][i] == '\0' || argv[1][i] == ' ' || argv[1][i] == '\t')
+				i--;
+			end = i;
+			while(argv[1][i] && argv[1][i] != ' ' && argv[1][i] != '\t')
+				i--;
+			start = i + 1;
+			int  flag;
+			flag = start;
+			while(start <= end)
 			{
-				while (argv[1][i] && !is_space(argv[1][i]))
-					write(1, &argv[1][i++], 1);
+				write (1, &argv[1][start],1);
+				start++;		
+			}
+			if (flag !=0)
+			{
 				write(1, " ", 1);
 			}
-			i++;
 		}
-		while (argv[1][rot] && !is_space(argv[1][rot]))
-			write(1, &argv[1][rot++], 1);
 	}
 	write(1, "\n", 1);
-	return (0);
 }

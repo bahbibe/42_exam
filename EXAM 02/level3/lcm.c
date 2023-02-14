@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_remove_if.c                                :+:      :+:    :+:   */
+/*   lcm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 04:09:35 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/14 04:09:35 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/14 03:17:57 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/14 03:18:36 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include <stdlib.h>
-#include "ft_list.h"
-
-void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
+unsigned int lcm(unsigned int a, unsigned int b)
 {
-	if (begin_list == NULL || *begin_list == NULL)
-		return;
+	unsigned int n;	
 
-	t_list *cur = *begin_list;
-
-	if (cmp(cur->data, data_ref) == 0)
+	if (a == 0 || b == 0)
+		return (0);
+	n = (a > b) ? a : b ;
+	while (1)
 	{
-		*begin_list = cur->next;
-		free(cur);
-		ft_list_remove_if(begin_list, data_ref, cmp);
+		if (n % a == 0 && n % b == 0)
+			return (n);
+		++n;
 	}
-	cur = *begin_list;
-	ft_list_remove_if(&cur->next, data_ref, cmp);
 }

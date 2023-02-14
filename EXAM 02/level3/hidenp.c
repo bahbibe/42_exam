@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pgcd.c                                             :+:      :+:    :+:   */
+/*   hidenp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 21:21:57 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/08 13:50:02 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/14 03:15:50 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/14 03:16:12 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <unistd.h>
 
-void	pgcd(int a, int b)
+int main(int argc, char **argv)
 {
-	int i = 1;
-	int gcd = 0;
-	while (i < a && i < b)
+	int i = 0;
+	int j = 0;
+	
+	if (argc == 3)
 	{
-		if (a % i == 0 && b % i == 0)
-			gcd = i;
-		i++;
+		while (argv[2][j] && argv[1][i])
+		{
+			if (argv[2][j] == argv[1][i])
+				i++;
+			j++;
+		}
+		if (argv[1][i] == '\0')
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
 	}
-	printf("%d", gcd);
-}
-unsigned int lcm(unsigned int a, unsigned int b)
-{
-	unsigned int n;	
-
-	if (a == 0 || b == 0)
-		return (0);
-	if (a > b)
-		n = a;
-	else
-		n = b;
-	while (1)
-	{
-		if (n % a == 0 && n % b == 0)
-			return (n);
-		++n;
-	}
+	write(1, "\n", 1);
+	return (0);
 }

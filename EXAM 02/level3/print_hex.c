@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_int_tab.c                                     :+:      :+:    :+:   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 03:38:52 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/14 03:39:51 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/01/19 22:31:24 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/14 03:23:55 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-void	ft_swap(int *a, int *b)
+#include<unistd.h>
+void putchar(char c)
 {
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	write(1,&c,1);
 }
-
-void	sort_int_tab(int *tab, unsigned int size)
+int	small_atoi(char *str)
 {
-	unsigned int	i = 0;
-
-	while (i < (size - 1))
-	{
-		if (tab[i] > tab[i + 1])
-		{
-			ft_swap(tab[i], tab[i + 1]);
-			i = 0;
-		}
-		else
-			i++;
-	}
+	int	i = 0;
+	int	res = 0;
+	while (str[i])
+		res = res * 10 + str[i++] - '0';
+	return (res);
+}
+void	print_hex(int nbr)
+{
+	if (nbr >= 16)
+		print_hex(nbr / 16);
+	putchar("0123456789abcdef"[nbr % 16]);
+}
+int main(int ac, char **av)
+{
+	if (ac == 2)
+		print_hex(small_atoi(av[1]));
+	write(1,"\n",1);
 }

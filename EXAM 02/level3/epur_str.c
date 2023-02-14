@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_list.c                                        :+:      :+:    :+:   */
+/*   epur_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 03:37:15 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/14 03:37:38 by bahbibe          ###   ########.fr       */
+/*   Created: 2023/02/14 02:41:32 by bahbibe           #+#    #+#             */
+/*   Updated: 2023/02/14 03:13:04 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "list.h"
+#include <unistd.h>
 
-void	ft_swap(int *a, int *b)
+int main(int argc, char const *argv[])
 {
-	int	tmp;
+	int i;
+	int flg;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
-{
-	t_list	*tmp;
-
-	tmp = lst;
-	while (lst->next)
+	if (argc == 2)
 	{
-		if (((*cmp)(lst->data, lst->next->data)) == 0)
+		i = 0;
+		while (argv[1][i] == ' ' || argv[1][i] == '\t')
+			i++;
+		while (argv[1][i])
 		{
-			ft_swap(&lst->data, &lst->next->data);
-			lst = tmp;
+			if (argv[1][i] == ' ' || argv[1][i] == '\t')
+				flg = 1;
+			if (!(argv[1][i] == ' ' || argv[1][i] == '\t'))
+			{
+				if (flg)
+					write(1, " ", 1);
+				flg = 0;
+				write(1, &argv[1][i], 1);
+			}
+			i++;
 		}
-		else
-			lst = lst->next;
 	}
-	lst = tmp;
-	return (lst);
+	write(1, "\n", 1);
+	return (0);
 }

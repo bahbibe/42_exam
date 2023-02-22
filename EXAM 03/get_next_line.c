@@ -6,12 +6,16 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 04:16:32 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/16 11:50:26 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:18:45 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+
+#if BUFFER_SIZE > 1
+#undef BUFFER_SIZE
+#define BUFFER_SIZE 1
 
 char *get_next_line(int fd)
 {

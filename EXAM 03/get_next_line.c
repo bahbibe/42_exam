@@ -6,7 +6,7 @@
 /*   By: bahbibe <bahbibe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 04:16:32 by bahbibe           #+#    #+#             */
-/*   Updated: 2023/02/22 12:18:45 by bahbibe          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:52:04 by bahbibe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #if BUFFER_SIZE > 1
 #undef BUFFER_SIZE
 #define BUFFER_SIZE 1
+#endif
 
 char *get_next_line(int fd)
 {
